@@ -278,12 +278,10 @@ def accepts_is_training(module):
 class WeightedSumMerge(snt.Module):
     def __init__(self, name='weighted_sum_merge'):
         super().__init__(name=name)
-        # 定义可学习的权重 alpha 和 beta
         self.alpha = tf.Variable(initial_value=0.7, trainable=True, dtype=tf.float32)
         self.beta = tf.Variable(initial_value=0.3, trainable=True, dtype=tf.float32)
 
     def __call__(self, x: tf.Tensor, onehot_sequence: tf.Tensor) -> tf.Tensor:
-        # 加权操作
         weighted_x = self.alpha * x
         weighted_onehot_sequence = self.beta * onehot_sequence
         weighted_sum = weighted_x + weighted_onehot_sequence
