@@ -4,7 +4,7 @@ from tqdm import tqdm
 import numpy as np
 import pandas as pd
 import os
-import model_DeepSEQ_con
+import model_DCFICSH
 from sklearn.metrics import roc_auc_score, average_precision_score, recall_score, precision_score, accuracy_score
 import itertools
 from keras.preprocessing.text import Tokenizer
@@ -259,7 +259,6 @@ def save_model_with_signature(model, save_path):
     checkpoint_manager = tf.train.CheckpointManager(checkpoint, directory=save_path, max_to_keep=1)
     checkpoint_manager.save()
 
-    # 创建并保存模型的签名
     signature = create_model_signature(model)
     signature_path = os.path.join(save_path, "model_signature")
     tf.saved_model.save(model, signature_path, signatures=signature)
@@ -290,7 +289,6 @@ def compute_average_result(file_path):
             rec_list.append(float(values[3]))
             pre_list.append(float(values[4]))
 
-        # 计算每个指标的平均值
         avg_acc = sum(acc_list) / len(acc_list)
         avg_auc = sum(auc_list) / len(auc_list)
         avg_aupr = sum(aupr_list) / len(aupr_list)
@@ -333,7 +331,7 @@ for fold in range(Kfold):
 
 
 
-    model = model_DeepSEQ_con.Enformer(
+    model = model_DCFICSH.Enformer(
         channels=channels_param, num_transformer_layers=transformer_param, num_heads=heads_param)
     optimizer = snt.optimizers.Adam(learning_rate=learning_rate)
     train_step = create_step_function(model, optimizer)
