@@ -37,7 +37,6 @@ DCFICSH/
 The code is implemented in Python. Based on the environment used, the key dependencies are listed below. You can install them using `pip`.
 
 ### Core Requirements
-* **Python** (Tested on 3.8 based on package compatibility)
 * `tensorflow==2.4.1`
 * `Keras==2.4.1`
 * `numpy==1.19.5`
