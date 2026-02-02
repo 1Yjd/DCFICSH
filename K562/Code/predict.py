@@ -4,7 +4,7 @@ from tqdm import tqdm
 import numpy as np
 import pandas as pd
 import os
-import model_DeepSEQ_con
+import model_DCFICSH
 from sklearn.metrics import roc_auc_score, average_precision_score, recall_score, precision_score, accuracy_score
 import itertools
 from keras.preprocessing.text import Tokenizer
@@ -337,7 +337,7 @@ for fold in range(Kfold):
 
 
 
-    model = model_DeepSEQ_con.Enformer(
+    model = model_DCFICSH.Enformer(
         channels=channels_param, num_transformer_layers=transformer_param, num_heads=heads_param)
     optimizer = snt.optimizers.Adam(learning_rate=learning_rate)
     train_step = create_step_function(model, optimizer)
