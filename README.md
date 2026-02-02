@@ -62,9 +62,6 @@ Use `base_seq.py` to preprocess the raw data and prepare it for the model.
 python base_seq.py
 ```
 
-Input: Raw sequence data from the ../dataset/ folder.
-
-Output: Preprocessed sequences/features ready for model input.
 
 ### 2. Model Architecture
 The file model_DCFICSH.py contains the definition of the Dual-Channel Fusion Model. You usually do not need to run this file directly, as it is imported by the training script.
